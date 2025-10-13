@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react";
+import logo from "@/assets/ebikes-logo.png";
 
 export const Footer = () => {
   return (
@@ -7,11 +7,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="p-2 bg-primary">
-                <Zap className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">Ebikes Africa</span>
+            <div className="mb-4">
+              <img src={logo} alt="Ebikes Africa" className="h-8 brightness-0 invert" />
             </div>
             <p className="text-sm text-secondary-foreground/80">
               Powering Africa's electric mobility future.

@@ -1,18 +1,29 @@
 import { Link } from "react-router-dom";
-import { Zap } from "lucide-react";
+import { Menu } from "lucide-react";
+import { useState } from "react";
+import logo from "@/assets/ebikes-logo.png";
 
 export const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
       <div className="container px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="p-2 bg-primary">
-            <Zap className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="text-lg font-bold">Ebikes Africa</span>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Ebikes Africa" className="h-8 md:h-10" />
         </Link>
 
-        <div className="flex items-center gap-6">
+        {/* Mobile menu button */}
+        <button 
+          className="md:hidden p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+
+        {/* Desktop menu */}
+        <div className="hidden md:flex items-center gap-6">
           <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
             Home
           </Link>
@@ -24,6 +35,35 @@ export const Navigation = () => {
           </Link>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-border bg-background">
+          <div className="container px-4 py-4 flex flex-col gap-4">
+            <Link 
+              to="/" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link 
+              to="/contacts" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contacts
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

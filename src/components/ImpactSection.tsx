@@ -24,15 +24,15 @@ export const ImpactSection = () => {
   return (
     <section className="py-12 bg-background">
       <div className="container px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 px-4">
           Real Growth. Real Impact.
         </h2>
-        <p className="text-center text-muted-foreground mb-8">
+        <p className="text-center text-muted-foreground mb-8 px-4">
           Transforming mobility across Africa, one electric journey at a time
         </p>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <div
               key={index}

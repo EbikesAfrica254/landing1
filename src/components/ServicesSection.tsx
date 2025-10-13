@@ -26,18 +26,18 @@ export const ServicesSection = () => {
   return (
     <section className="py-12 bg-muted/30">
       <div className="container px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 px-4">
           Powering Africa's Mobility Landscape
         </h2>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto px-4">
           Three interconnected pillars driving electric transformation
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-8 hover:shadow-md transition-shadow group border-2"
+              className="p-6 md:p-8 hover:shadow-md transition-shadow group border-2"
             >
               <div className="mb-4 inline-flex p-4 bg-primary">
                 <service.icon className="h-8 w-8 text-primary-foreground" />
