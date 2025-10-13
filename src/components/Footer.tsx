@@ -8,7 +8,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="p-2 bg-primary rounded-lg">
+              <div className="p-2 bg-primary">
                 <Zap className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold">Ebikes Africa</span>

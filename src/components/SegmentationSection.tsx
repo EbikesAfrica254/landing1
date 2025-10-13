@@ -31,28 +31,27 @@ const segments = [
 
 export const SegmentationSection = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-12 bg-background">
       <div className="container px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
           How can we power your journey today?
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           Select your path to electric mobility
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {segments.map((segment, index) => (
             <Card
               key={index}
-              className="p-6 hover:shadow-card transition-all duration-300 hover:-translate-y-2 cursor-pointer group border-2 hover:border-primary/50"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="p-6 hover:shadow-md transition-shadow cursor-pointer group border-2"
             >
-              <div className="mb-4 inline-flex p-3 bg-gradient-electric rounded-lg group-hover:shadow-glow transition-shadow">
+              <div className="mb-4 inline-flex p-3 bg-primary">
                 <segment.icon className="h-8 w-8 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2">{segment.title}</h3>
               <p className="text-muted-foreground mb-4 text-sm">{segment.description}</p>
-              <Button variant="ghost" className="w-full group-hover:bg-primary group-hover:text-primary-foreground">
+              <Button variant="ghost" className="w-full">
                 {segment.cta}
               </Button>
             </Card>
