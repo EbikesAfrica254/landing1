@@ -1,8 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import businessImg from "@/assets/solution-business.jpg";
+import individualImg from "@/assets/solution-individual.jpg";
+import partnersImg from "@/assets/solution-partners.jpg";
 
 const solutions = [
   {
+    image: businessImg,
     category: "For Businesses",
     title: "bEBA Logistics & AI",
     description: "End-to-end last-mile delivery solution powered by AI fleet management. Perfect for e-commerce, corporates, and e-mobility partners seeking scalable operations.",
@@ -16,6 +20,7 @@ const solutions = [
     highlight: true,
   },
   {
+    image: individualImg,
     category: "For Individuals",
     title: "E-Bike Ownership",
     description: "Access premium electric bikes through affordable purchase or 0% interest lease-to-own. Ideal for commuters, riders, fitness enthusiasts, and adventurers.",
@@ -29,6 +34,7 @@ const solutions = [
     highlight: false,
   },
   {
+    image: partnersImg,
     category: "For Partners",
     title: "Ecosystem Integration",
     description: "Join our growing network of suppliers, technicians, hotels, and service providers connected to thousands of active riders and businesses.",
@@ -61,31 +67,38 @@ export const SolutionsSection = () => {
           {solutions.map((solution, index) => (
             <Card
               key={index}
-              className={`p-8 border-2 flex flex-col ${
-                solution.highlight ? 'border-primary bg-primary/5' : ''
+              className={`border-2 flex flex-col overflow-hidden ${
+                solution.highlight ? 'border-primary' : ''
               }`}
             >
-              <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">
-                {solution.category}
-              </div>
-              <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
-              <p className="text-muted-foreground mb-6">{solution.description}</p>
-              
-              <ul className="space-y-2 mb-6 flex-grow">
-                {solution.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-primary font-bold">•</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <img 
+                src={solution.image} 
+                alt={solution.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">
+                  {solution.category}
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{solution.title}</h3>
+                <p className="text-muted-foreground mb-6">{solution.description}</p>
+                
+                <ul className="space-y-2 mb-6 flex-grow">
+                  {solution.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <span className="text-primary font-bold">•</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <Button 
-                variant={solution.highlight ? "default" : "outline"} 
-                className="w-full mt-auto"
-              >
-                {solution.cta}
-              </Button>
+                <Button 
+                  variant={solution.highlight ? "default" : "outline"} 
+                  className="w-full mt-auto"
+                >
+                  {solution.cta}
+                </Button>
+              </div>
             </Card>
           ))}
         </div>

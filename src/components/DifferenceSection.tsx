@@ -1,3 +1,5 @@
+import techImg from "@/assets/value-tech.jpg";
+
 export const DifferenceSection = () => {
   return (
     <section className="py-12 bg-muted/30">
@@ -11,6 +13,14 @@ export const DifferenceSection = () => {
             for Africa's electric future.
           </p>
           
+          <div className="mb-12">
+            <img 
+              src={techImg} 
+              alt="AI Technology"
+              className="w-full h-[400px] object-cover"
+            />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">Tech</div>
