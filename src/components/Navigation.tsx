@@ -30,6 +30,15 @@ export const Navigation = () => {
           <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
             About
           </Link>
+          <Link to="/electric-bicycles" className="text-sm font-medium hover:text-primary transition-colors">
+            E-Bikes
+          </Link>
+          <Link to="/beba-ai" className="text-sm font-medium hover:text-primary transition-colors">
+            bEBA AI
+          </Link>
+          <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary transition-colors">
+            Delivery
+          </Link>
           <Link to="/contacts" className="text-sm font-medium hover:text-primary transition-colors">
             Contacts
           </Link>
@@ -53,6 +62,27 @@ export const Navigation = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               About
+            </Link>
+            <Link 
+              to="/electric-bicycles" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              E-Bikes
+            </Link>
+            <Link 
+              to="/beba-ai" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              bEBA AI
+            </Link>
+            <Link 
+              to="/beba-delivery" 
+              className="text-sm font-medium hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Delivery
             </Link>
             <Link 
               to="/contacts" 
