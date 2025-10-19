@@ -1,8 +1,7 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const stories = [
   {
@@ -48,7 +47,49 @@ const stories = [
 ];
 
 export const HorizontalScrollSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isHorizontalScrolling, setIsHorizontalScrolling] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const scrollContainer = scrollRef.current;
+
+    if (!container || !scrollContainer) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const containerRect = container.getBoundingClientRect();
+      const isInView = containerRect.top <= 100 && containerRect.bottom >= window.innerHeight;
+
+      if (!isInView) {
+        setIsHorizontalScrolling(false);
+        return;
+      }
+
+      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      const currentScroll = scrollContainer.scrollLeft;
+
+      // Check if we should hijack the scroll
+      const shouldHijack =
+        (e.deltaY > 0 && currentScroll < maxScrollLeft) || // Scrolling down and not at end
+        (e.deltaY < 0 && currentScroll > 0); // Scrolling up and not at start
+
+      if (shouldHijack) {
+        e.preventDefault();
+        setIsHorizontalScrolling(true);
+        scrollContainer.scrollLeft += e.deltaY;
+      } else {
+        setIsHorizontalScrolling(false);
+      }
+    };
+
+    // Add passive: false to allow preventDefault
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -61,7 +102,7 @@ export const HorizontalScrollSection = () => {
   };
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section ref={containerRef} className="py-20 bg-background relative overflow-hidden">
       <div className="container px-4 mb-8">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -93,11 +134,14 @@ export const HorizontalScrollSection = () => {
         </div>
       </div>
 
-      <ScrollArea className="w-full">
+      <div className="relative">
         <div
           ref={scrollRef}
-          className="flex gap-6 px-4 md:px-8 pb-4 scroll-smooth"
-          style={{ scrollSnapType: "x mandatory" }}
+          className="flex gap-6 px-4 md:px-8 pb-4 overflow-x-auto scrollbar-hide"
+          style={{ 
+            scrollSnapType: "x mandatory",
+            scrollBehavior: "smooth"
+          }}
         >
           {stories.map((story) => (
             <Card
@@ -129,14 +173,23 @@ export const HorizontalScrollSection = () => {
             </Card>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+      </div>
 
       <div className="container px-4 mt-8 text-center">
         <p className="text-sm text-muted-foreground">
-          Scroll horizontally to explore more stories →
+          {isHorizontalScrolling ? "Keep scrolling to explore →" : "Scroll to explore stories →"}
         </p>
       </div>
+
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 };
