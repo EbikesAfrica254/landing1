@@ -1,241 +1,244 @@
+import { useRef, useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
-import { useState } from "react";
-import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters")
-});
+import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const Contacts = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isFocused, setIsFocused] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      contactSchema.parse(formData);
-      
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-      
-      setFormData({ name: "", email: "", message: "" });
-      setErrors({});
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const fieldErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            fieldErrors[err.path[0].toString()] = err.message;
-          }
-        });
-        setErrors(fieldErrors);
-      }
-    }
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    const scrollContainer = scrollContainerRef.current;
+
+    if (!container || !scrollContainer) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      scrollContainer.scrollLeft += e.deltaY;
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen overflow-hidden bg-background">
       <Navigation />
       
-      <main className="pt-24 pb-20">
-        <div className="container max-w-6xl mx-auto px-4 md:px-8">
-          {/* Hero Text */}
-          <div className="mb-20 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight">
-              Let's talk
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              Have a question or want to work together? We'd love to hear from you.
-            </p>
-          </div>
+      <div ref={containerRef} className="h-full pt-16">
+        <div 
+          ref={scrollContainerRef}
+          className="flex h-full overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {/* Panel 1 - Hero */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="max-w-4xl">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-none">
+                Marcus Carter
+              </h1>
+              <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6">
+                Available for freelance projects
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                Currently freelancing as a product designer and front-end developer. 
+                Design advisor to Circular and Acme. Formerly design lead at Untitled.
+              </p>
+            </div>
+          </section>
 
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Contact Form */}
-            <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Send us a message</h2>
+          {/* Panel 2 - Contact Info */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="max-w-3xl w-full">
+              <h2 className="text-4xl md:text-6xl font-bold mb-16">Get in touch</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="relative">
-                  <label 
-                    htmlFor="name"
-                    className={`absolute left-0 transition-all duration-200 pointer-events-none ${
-                      isFocused === 'name' || formData.name 
-                        ? '-top-6 text-sm text-primary' 
-                        : 'top-4 text-base text-muted-foreground'
-                    }`}
-                  >
-                    Your name
-                  </label>
-                  <input 
-                    id="name"
-                    type="text" 
-                    className="w-full bg-transparent border-b-2 border-border focus:border-primary py-4 outline-none transition-colors"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    onFocus={() => setIsFocused('name')}
-                    onBlur={() => setIsFocused(null)}
-                  />
-                  {errors.name && <p className="text-destructive text-sm mt-2">{errors.name}</p>}
+              <div className="space-y-12">
+                <div className="group">
+                  <div className="flex items-start gap-6">
+                    <div className="p-4 bg-muted rounded-2xl">
+                      <Mail className="h-8 w-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold mb-3">Email</h3>
+                      <a 
+                        href="mailto:hey@marcuscarter.com" 
+                        className="text-xl text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        hey@marcuscarter.com
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="relative">
-                  <label 
-                    htmlFor="email"
-                    className={`absolute left-0 transition-all duration-200 pointer-events-none ${
-                      isFocused === 'email' || formData.email 
-                        ? '-top-6 text-sm text-primary' 
-                        : 'top-4 text-base text-muted-foreground'
-                    }`}
-                  >
-                    Email address
-                  </label>
-                  <input 
-                    id="email"
-                    type="email" 
-                    className="w-full bg-transparent border-b-2 border-border focus:border-primary py-4 outline-none transition-colors"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    onFocus={() => setIsFocused('email')}
-                    onBlur={() => setIsFocused(null)}
-                  />
-                  {errors.email && <p className="text-destructive text-sm mt-2">{errors.email}</p>}
+
+                <div className="group">
+                  <div className="flex items-start gap-6">
+                    <div className="p-4 bg-muted rounded-2xl">
+                      <MapPin className="h-8 w-8" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold mb-3">Based in</h3>
+                      <p className="text-xl text-muted-foreground">San Francisco, California, USA 🇺🇸</p>
+                      <p className="text-lg text-muted-foreground mt-2">UTC/GMT -8 hours</p>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="relative">
-                  <label 
-                    htmlFor="message"
-                    className={`absolute left-0 transition-all duration-200 pointer-events-none ${
-                      isFocused === 'message' || formData.message 
-                        ? '-top-6 text-sm text-primary' 
-                        : 'top-4 text-base text-muted-foreground'
-                    }`}
-                  >
-                    Your message
-                  </label>
-                  <textarea 
-                    id="message"
-                    className="w-full bg-transparent border-b-2 border-border focus:border-primary py-4 outline-none resize-none transition-colors"
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    onFocus={() => setIsFocused('message')}
-                    onBlur={() => setIsFocused(null)}
-                  />
-                  {errors.message && <p className="text-destructive text-sm mt-2">{errors.message}</p>}
-                </div>
-                
-                <Button 
-                  type="submit"
-                  size="lg"
-                  className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg"
+              </div>
+            </div>
+          </section>
+
+          {/* Panel 3 - Social */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="max-w-3xl w-full">
+              <h2 className="text-4xl md:text-6xl font-bold mb-16">Connect</h2>
+              
+              <div className="space-y-8">
+                <a 
+                  href="#" 
+                  className="flex items-center gap-6 p-6 rounded-3xl hover:bg-muted transition-all duration-300 group"
                 >
-                  Send Message
-                  <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </form>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-8">Get in touch</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-                  Whether you're looking to transform your business logistics, purchase an electric bike, 
-                  or join our rider network, we're here to help.
-                </p>
-              </div>
-
-              <div className="space-y-10">
-                <div className="group cursor-pointer">
-                  <div className="flex items-start gap-4 p-6 rounded-2xl hover:bg-muted/50 transition-colors">
-                    <div className="p-3 bg-primary/10 rounded-full">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">Email us</h3>
-                      <a href="mailto:info@ebikesafrica.com" className="text-muted-foreground hover:text-primary transition-colors block">
-                        info@ebikesafrica.com
-                      </a>
-                      <a href="mailto:support@ebikesafrica.com" className="text-muted-foreground hover:text-primary transition-colors block">
-                        support@ebikesafrica.com
-                      </a>
-                    </div>
+                  <div className="p-4 bg-muted group-hover:bg-background rounded-2xl transition-colors">
+                    <Twitter className="h-8 w-8" />
                   </div>
-                </div>
-
-                <div className="group cursor-pointer">
-                  <div className="flex items-start gap-4 p-6 rounded-2xl hover:bg-muted/50 transition-colors">
-                    <div className="p-3 bg-primary/10 rounded-full">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">Call us</h3>
-                      <a href="tel:+254700000000" className="text-muted-foreground hover:text-primary transition-colors block">
-                        +254 700 000 000
-                      </a>
-                      <a href="tel:+2348000000000" className="text-muted-foreground hover:text-primary transition-colors block">
-                        +234 800 000 0000
-                      </a>
-                    </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-1">Twitter</p>
+                    <p className="text-2xl font-semibold">@marcar</p>
+                    <p className="text-lg text-muted-foreground">5,215 followers</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="group cursor-pointer">
-                  <div className="flex items-start gap-4 p-6 rounded-2xl hover:bg-muted/50 transition-colors">
-                    <div className="p-3 bg-primary/10 rounded-full">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">Visit us</h3>
-                      <p className="text-muted-foreground">Nairobi, Kenya</p>
-                      <p className="text-muted-foreground">Lagos, Nigeria</p>
-                    </div>
+                <a 
+                  href="#" 
+                  className="flex items-center gap-6 p-6 rounded-3xl hover:bg-muted transition-all duration-300 group"
+                >
+                  <div className="p-4 bg-muted group-hover:bg-background rounded-2xl transition-colors">
+                    <Linkedin className="h-8 w-8" />
                   </div>
-                </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-1">LinkedIn</p>
+                    <p className="text-2xl font-semibold">@marcus</p>
+                    <p className="text-lg text-muted-foreground">488 connections</p>
+                  </div>
+                </a>
 
-                <div className="group cursor-pointer">
-                  <div className="flex items-start gap-4 p-6 rounded-2xl hover:bg-muted/50 transition-colors">
-                    <div className="p-3 bg-primary/10 rounded-full">
-                      <MessageCircle className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">Social media</h3>
-                      <div className="flex gap-4 mt-3">
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                          Twitter
-                        </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                          LinkedIn
-                        </a>
-                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                          Instagram
-                        </a>
-                      </div>
-                    </div>
+                <a 
+                  href="#" 
+                  className="flex items-center gap-6 p-6 rounded-3xl hover:bg-muted transition-all duration-300 group"
+                >
+                  <div className="p-4 bg-muted group-hover:bg-background rounded-2xl transition-colors">
+                    <Instagram className="h-8 w-8" />
                   </div>
-                </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-1">Instagram</p>
+                    <p className="text-2xl font-semibold">@marcus</p>
+                  </div>
+                </a>
               </div>
             </div>
-          </div>
+          </section>
+
+          {/* Panel 4 - Image Grid */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="max-w-5xl w-full">
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="aspect-square bg-muted rounded-3xl overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/10" />
+                </div>
+                <div className="aspect-square bg-muted rounded-3xl overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/10" />
+                </div>
+              </div>
+              
+              <div className="flex gap-6 justify-center">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div 
+                    key={i}
+                    className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+                  >
+                    <div className="w-8 h-8 bg-foreground/20 rounded-full" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Panel 5 - Large Image */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="max-w-4xl w-full h-3/4 bg-muted rounded-3xl overflow-hidden">
+              <div className="w-full h-full bg-gradient-to-br from-muted via-muted-foreground/10 to-muted" />
+            </div>
+          </section>
+
+          {/* Panel 6 - Work Carousel */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="flex gap-6 overflow-visible">
+              {[1, 2, 3].map((i) => (
+                <div 
+                  key={i}
+                  className="flex-shrink-0 w-[400px] h-[500px] bg-muted rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500"
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/20" />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Panel 7 - Footer */}
+          <section 
+            className="flex-shrink-0 w-screen h-full flex items-center justify-center px-8 md:px-16"
+            style={{ scrollSnapAlign: "start" }}
+          >
+            <div className="text-center">
+              <h2 className="text-5xl md:text-7xl font-bold mb-8">
+                Let's work together
+              </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-12">
+                Available for new projects starting January 2024
+              </p>
+              <a 
+                href="mailto:hey@marcuscarter.com"
+                className="inline-block px-12 py-6 bg-primary text-primary-foreground rounded-full text-xl font-semibold hover:scale-105 transition-transform"
+              >
+                Get in touch
+              </a>
+              
+              <p className="text-sm text-muted-foreground mt-16">
+                © 2025 Horizontal by @justinmfarrugia
+              </p>
+            </div>
+          </section>
         </div>
-      </main>
-      
-      <Footer />
+      </div>
+
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };
