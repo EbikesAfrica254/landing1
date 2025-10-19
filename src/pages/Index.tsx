@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
-import { HorizontalScrollSection } from "@/components/HorizontalScrollSection";
 import { PersonaSection } from "@/components/PersonaSection";
 import { ValuePropositionSection } from "@/components/ValuePropositionSection";
 import { SolutionsSection } from "@/components/SolutionsSection";
@@ -15,7 +14,6 @@ const Index = () => {
       <div className="pt-16">
         <HeroSection />
         <DifferenceSection />
-        <HorizontalScrollSection />
         <PersonaSection />
         <ValuePropositionSection />
         <SolutionsSection />

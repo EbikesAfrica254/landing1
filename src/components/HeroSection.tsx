@@ -22,7 +22,7 @@ export const HeroSection = () => {
         <p className="text-xl md:text-2xl text-primary-foreground mb-8 max-w-3xl mx-auto drop-shadow-lg">
           Powering Work, Life, and Mobility Across the Continent
         </p>
-        <Button variant="ghost-primary" size="xl">
+        <Button variant="hero" size="xl">
           Explore Electric Solutions
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
