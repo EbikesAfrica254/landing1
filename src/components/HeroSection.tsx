@@ -16,7 +16,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-background">
+    <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-blue-50 to-background">
       {/* Background Image with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
         <img 
