@@ -37,7 +37,7 @@ export const HeroSection = () => {
             src={image} 
             alt={`Electric bike scene ${index + 1}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-30' : 'opacity-0'
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
