@@ -10,15 +10,15 @@ export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
-  const rotatingWords = ["Electric", "Sustainable", "Green", "Bright", "Innovative"];
+  const rotatingWords = ["Mobility", "Logistics", "Green", "Bright", "Innovative"];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -38,16 +38,19 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-blue-50 to-background">
+    <section
+      id="hero-section"
+      className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-blue-50 to-background"
+    >
       {/* Background Images with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((image, index) => (
-          <img 
+          <img
             key={index}
-            src={image} 
+            src={image}
             alt={`Electric bike scene ${index + 1}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
             style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
@@ -59,9 +62,9 @@ export const HeroSection = () => {
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Africa's Future is <span className="transition-all duration-500 inline-block">{rotatingWords[currentWordIndex]}</span>
+            Electric <span className="transition-all duration-500 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
-          
+
           {/* Dual CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="text-lg px-8 py-6">
