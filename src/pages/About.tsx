@@ -209,8 +209,7 @@ const About = () => {
                     {selectedMember.bio}
                   </p>
                   <Button
-                    variant="default"
-                    className="w-full md:w-auto"
+                    className="w-full md:w-auto bg-black text-white hover:bg-green-600 transition-colors"
                     onClick={() => window.open(selectedMember.linkedin, '_blank')}
                   >
                     <Linkedin className="h-4 w-4 mr-2" />
