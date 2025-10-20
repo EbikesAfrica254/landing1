@@ -8,7 +8,9 @@ import { useState, useEffect } from "react";
 export const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
+  const rotatingWords = ["Electric", "Sustainable", "Green", "Bright", "Innovative"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,14 @@ export const HeroSection = () => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
     }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % rotatingWords.length);
+    }, 3000); // Change word every 3 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -52,7 +62,7 @@ export const HeroSection = () => {
             Powering Work, Life, and Mobility Across the Continent with cutting-edge electric solutions
           </p>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Africa's Future is Electric
+            Africa's Future is <span className="transition-all duration-500 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
           
           {/* Dual CTAs */}
