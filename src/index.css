@@ -107,3 +107,10 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .container {
+    width: 94%;
+    max-width: 1200px;
+  }
+}
