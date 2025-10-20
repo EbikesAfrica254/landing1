@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/ebikes-logo.png";
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,8 +17,7 @@ export const Navigation = () => {
         </button>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex items-center gap-6">
-          
+        <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
           <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
             About
           </Link>
@@ -30,9 +30,13 @@ export const Navigation = () => {
           <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary transition-colors">
             Delivery
           </Link>
-          <Link to="/contacts" className="text-sm font-medium hover:text-primary transition-colors">
-            Contacts
-          </Link>
+        </div>
+        
+        {/* Contacts Button */}
+        <div className="hidden md:block">
+          <Button asChild className="bg-foreground text-background hover:bg-primary">
+            <Link to="/contacts">Contacts</Link>
+          </Button>
         </div>
       </div>
 
