@@ -19,14 +19,11 @@ export const Navigation = () => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
-          <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
-            About
+          <Link to="/electric-bicycles" className="text-sm font-medium hover:text-primary hover:scale-110 transition-all duration-200">
+            Buy an e-bike
           </Link>
-          <Link to="/electric-bicycles" className="text-sm font-medium hover:text-primary transition-colors">
-            E-Bikes
-          </Link>
-          <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary transition-colors">
-            Delivery
+          <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary hover:scale-110 transition-all duration-200">
+            Deliver Goods
           </Link>
         </div>
 
@@ -53,18 +50,11 @@ export const Navigation = () => {
               Home
             </Link>
             <Link
-              to="/about"
-              className="text-sm font-medium hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
               to="/electric-bicycles"
               className="text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              E-Bikes
+              Buy an e-bike
             </Link>
             <Link
               to="/beba-ai"
@@ -78,7 +68,7 @@ export const Navigation = () => {
               className="text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Delivery
+              Deliver Goods
             </Link>
             <Link
               to="/contacts"
