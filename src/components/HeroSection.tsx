@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
-  const rotatingWords = ["People Sustainably", "Goods Affordably", "Fleets Intelligently"];
+  const rotatingWords = ["People <br> Sustainably", "Goods <br> Affordably", "Fleets <br> Intelligently"];
 
   useEffect(() => {
     const handleScroll = () => {
