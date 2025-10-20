@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import heroImage1 from "@/assets/hero-ebike.jpg";
 import heroImage2 from "@/assets/hero-ebike-2.jpg";
 import heroImage3 from "@/assets/hero-ebike-3.jpg";
+import logo from "@/assets/ebikes-logo.png";
 import { useState, useEffect } from "react";
 
 export const HeroSection = () => {
@@ -60,7 +61,12 @@ export const HeroSection = () => {
 
       {/* Content */}
       <div className="container relative z-10 px-4 py-20">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl flex flex-col items-center text-center">
+          <img 
+            src={logo} 
+            alt="Ebikes Africa Logo" 
+            className="w-48 md:w-64 mb-8 animate-fade-in"
+          />
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
