@@ -2,7 +2,7 @@ import logo from "@/assets/ebikes-logo.png";
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12">
+    <footer className="bg-black text-white py-12">
       <div className="container px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
