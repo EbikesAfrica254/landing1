@@ -118,33 +118,31 @@ const About = () => {
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
-                  className="group cursor-pointer"
+                  className="group cursor-pointer perspective-1000"
                   onClick={() => setSelectedMember(member)}
                 >
-                  <div className="relative overflow-hidden rounded-lg aspect-[3/4] mb-4 hover-scale">
+                  <div className="relative overflow-hidden rounded-lg aspect-[3/4] transition-all duration-300 hover:scale-105 hover:rotate-1 hover:shadow-2xl">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                      <span className="text-primary-foreground font-semibold">View Profile</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/50 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                      <h3 className="font-bold text-lg mb-1 text-primary-foreground">{member.name}</h3>
+                      <p className="text-primary-foreground/90 text-sm mb-3">{member.role}</p>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8 rounded-full bg-background/20 backdrop-blur-sm border-primary-foreground/20 hover:bg-background/40"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(member.linkedin, '_blank');
+                        }}
+                      >
+                        <Linkedin className="h-4 w-4 text-primary-foreground" />
+                      </Button>
                     </div>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="font-bold text-lg mb-1">{member.name}</h3>
-                    <p className="text-muted-foreground text-sm mb-3">{member.role}</p>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="h-8 w-8 rounded-full"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(member.linkedin, '_blank');
-                      }}
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
                   </div>
                 </div>
               ))}
