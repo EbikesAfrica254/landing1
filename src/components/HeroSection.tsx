@@ -36,7 +36,7 @@ export const HeroSection = () => {
       {/* Background Images with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} style={{
-        transform: `translateY(${scrollY * 0.3}px)`,
+        transform: `translateY(${scrollY * 0.1}px)`,
         willChange: 'transform'
       }} />)}
         <div className="absolute inset-0 bg-black/50" />
