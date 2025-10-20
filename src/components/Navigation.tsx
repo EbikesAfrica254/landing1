@@ -32,10 +32,10 @@ export const Navigation = () => {
 
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Button asChild>
+          <Button asChild variant="dark">
             <Link to="/beba-ai">BEBA AI</Link>
           </Button>
-          <Button asChild className="bg-foreground text-background hover:bg-primary">
+          <Button asChild>
             <Link to="/contacts">Contact Us</Link>
           </Button>
         </div>
