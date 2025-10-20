@@ -25,7 +25,7 @@ export const HeroSection = () => {
           className="w-full h-full object-cover opacity-30"
           style={{ transform: `translateY(${scrollY * 0.5}px)` }}
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Content */}
