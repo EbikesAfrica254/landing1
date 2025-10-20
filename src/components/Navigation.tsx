@@ -33,7 +33,7 @@ export const Navigation = () => {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <Button asChild>
-            <Link to="/beba-ai">BEBA AI Login</Link>
+            <Link to="/beba-ai">BEBA AI</Link>
           </Button>
           <Button asChild className="bg-foreground text-background hover:bg-primary">
             <Link to="/contacts">Contact Us</Link>
