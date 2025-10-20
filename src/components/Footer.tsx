@@ -8,7 +8,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="mb-4">
-              <img src={logo} alt="Ebikes Africa" className="h-8 brightness-0 invert" />
+              <h3 className="text-2xl font-bold">Logo</h3>
             </div>
             <p className="text-sm text-secondary-foreground/80">
               Powering Africa's electric mobility future.
