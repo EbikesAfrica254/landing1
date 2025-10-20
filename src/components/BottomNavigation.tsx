@@ -3,7 +3,7 @@ import { Home, Info, Bike, Bot, Truck, Mail } from "lucide-react";
 
 export const BottomNavigation = () => {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border animate-in slide-in-from-bottom duration-300">
       <div className="container px-4 h-16 flex items-center justify-around">
         <Link to="/" className="flex flex-col items-center gap-1 text-xs hover:text-primary transition-colors">
           <Home className="h-5 w-5" />
