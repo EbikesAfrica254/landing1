@@ -1,4 +1,5 @@
 import { Navigation } from "@/components/Navigation";
+import { BottomNavigation } from "@/components/BottomNavigation";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustBadgesSection } from "@/components/TrustBadgesSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
@@ -46,6 +47,9 @@ const Index = () => {
       <FAQSection />
       <NewsletterSection />
       <Footer />
+      {isNavSticky && <BottomNavigation />}
+      {/* Spacer to prevent content from being hidden behind bottom nav */}
+      {isNavSticky && <div className="h-16" />}
     </div>
   );
 };
