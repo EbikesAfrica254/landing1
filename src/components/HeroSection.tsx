@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
-  const rotatingWords = ["People", "Goods", "Fleets"];
+  const rotatingWords = ["People Sustainably", "Goods Affordably", "Fleets Intelligently"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +63,6 @@ export const HeroSection = () => {
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Move <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
-            Sustainably
           </h1>
 
           {/* Dual CTAs */}
