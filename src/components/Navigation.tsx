@@ -7,7 +7,7 @@ export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+    <nav className="w-full bg-background border-b border-border">
       <div className="container px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Ebikes Africa" className="h-8 md:h-10" />
