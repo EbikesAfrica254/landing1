@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
-  const rotatingWords = ["Electric Mobility", "On-demand Logistics", "AI Fleet Management"];
+  const rotatingWords = ["People", "Goods", "Fleets"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +32,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % rotatingWords.length);
-    }, 7000); // Change word every 7 seconds
+    }, 7000); // Change word every 3 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -62,8 +62,8 @@ export const HeroSection = () => {
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            We Help Businesses Scale{" "}
-            <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
+            Move <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
+            Sustainably
           </h1>
 
           {/* Dual CTAs */}
