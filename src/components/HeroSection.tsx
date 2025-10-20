@@ -35,8 +35,9 @@ export const HeroSection = () => {
   return <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-black/10 to-background">
       {/* Background Images with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
-        {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} style={{
-        transform: `translateY(${scrollY * 0.5}px)`
+        {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} style={{
+        transform: `translateY(${scrollY * 0.3}px)`,
+        willChange: 'transform'
       }} />)}
         <div className="absolute inset-0 bg-black/50" />
       </div>
