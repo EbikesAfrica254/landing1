@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-ebike.jpg";
 
 export const HeroSection = () => {
   return (
-    <section id="hero-section" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-background">
+    <section id="hero-section" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-background">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
