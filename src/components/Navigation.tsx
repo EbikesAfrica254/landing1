@@ -20,7 +20,7 @@ export const Navigation = () => {
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
           <Link to="/electric-bicycles" className="text-sm font-medium hover:text-primary hover:scale-110 transition-all duration-200">
-            Buy an e-bike
+            View E-bikes
           </Link>
           <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary hover:scale-110 transition-all duration-200">
             Deliver Goods
