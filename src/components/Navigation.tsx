@@ -35,7 +35,7 @@ export const Navigation = () => {
           <Button asChild variant="dark">
             <Link to="/beba-ai">BEBA AI</Link>
           </Button>
-          <Button asChild>
+          <Button asChild variant="dark">
             <Link to="/contacts">Contact Us</Link>
           </Button>
         </div>
