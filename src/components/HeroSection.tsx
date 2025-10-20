@@ -59,14 +59,18 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
+      {/* Logo at top center */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
+        <img 
+          src={logo} 
+          alt="Ebikes Africa Logo" 
+          className="w-40 md:w-48 animate-fade-in"
+        />
+      </div>
+
       {/* Content */}
       <div className="container relative z-10 px-4 py-20">
-        <div className="max-w-3xl flex flex-col items-center text-center">
-          <img 
-            src={logo} 
-            alt="Ebikes Africa Logo" 
-            className="w-48 md:w-64 mb-8 animate-fade-in"
-          />
+        <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
