@@ -28,10 +28,10 @@ const NotFound = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="dark">
               <Link to="/">Return to Home</Link>
             </Button>
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="dark">
               <Link to="/contacts">Book a Free Test Ride</Link>
             </Button>
           </div>
