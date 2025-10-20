@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
-  const rotatingWords = ["Mobility", "Logistics", "Green", "Bright", "Innovative"];
+  const rotatingWords = ["Electric Mobility", "On-demand Logistics", "AI Fleet Management"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +24,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5000); // Change image every 5 seconds
+    }, 7000); // Change image every 7 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -32,7 +32,7 @@ export const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % rotatingWords.length);
-    }, 3000); // Change word every 3 seconds
+    }, 7000); // Change word every 7 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -62,7 +62,8 @@ export const HeroSection = () => {
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Electric <span className="transition-all duration-500 inline-block">{rotatingWords[currentWordIndex]}</span>
+            We Help Businesses Scale{" "}
+            <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
 
           {/* Dual CTAs */}
