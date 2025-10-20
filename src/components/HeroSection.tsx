@@ -52,7 +52,7 @@ export const HeroSection = () => {
           <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">
             Welcome to Ebikes Africa
           </h2>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
 
