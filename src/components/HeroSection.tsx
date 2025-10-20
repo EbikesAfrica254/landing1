@@ -49,7 +49,7 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-3xl text-left">
-          <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">AI + ELECTRIC TWO WHEELERS</h2>
+          <h3 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">AI + ELECTRIC TWO WHEELERS</h3>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             <span className="transition-all duration-1000 inline-block">{rotatingWords[currentWordIndex]}</span>
           </h1>
