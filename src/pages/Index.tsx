@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { TrustBadgesSection } from "@/components/TrustBadgesSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
 import { FeaturesAlternatingSection } from "@/components/FeaturesAlternatingSection";
+import { FullWidthImageSection } from "@/components/FullWidthImageSection";
 import { PersonaSection } from "@/components/PersonaSection";
 import { ValuePropositionSection } from "@/components/ValuePropositionSection";
 import { PricingSection } from "@/components/PricingSection";
@@ -40,6 +41,7 @@ const Index = () => {
       <TrustBadgesSection />
       <FeaturesAlternatingSection />
       <DifferenceSection />
+      <FullWidthImageSection />
       <PersonaSection />
       <ValuePropositionSection />
       <PricingSection />
