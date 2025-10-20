@@ -114,21 +114,20 @@ const About = () => {
         <section className="py-12 md:py-16 bg-muted/30">
           <div className="container px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Meet Our Team</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-6xl mx-auto">
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
                   className="group cursor-pointer perspective-1000"
                   onClick={() => setSelectedMember(member)}
                 >
-                  <div className="relative overflow-hidden rounded-lg aspect-[3/4] transition-all duration-300 hover:scale-105 hover:rotate-1 hover:shadow-2xl">
+                  <div className="relative overflow-hidden rounded-lg aspect-[3/4] transition-all duration-300 hover:scale-110 hover:rotate-2 hover:shadow-2xl">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/50 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                    <div className="absolute bottom-0 left-0 right-0 bg-secondary/90 backdrop-blur-sm p-4 text-center">
                       <h3 className="font-bold text-lg mb-1 text-primary-foreground">{member.name}</h3>
                       <p className="text-primary-foreground/90 text-sm mb-3">{member.role}</p>
                       <Button
