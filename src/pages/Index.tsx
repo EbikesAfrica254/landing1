@@ -6,6 +6,7 @@ import { DifferenceSection } from "@/components/DifferenceSection";
 import { FeaturesAlternatingSection } from "@/components/FeaturesAlternatingSection";
 import { PersonaSection } from "@/components/PersonaSection";
 import { ValuePropositionSection } from "@/components/ValuePropositionSection";
+import { AboutUsSection } from "@/components/AboutUsSection";
 import { PricingSection } from "@/components/PricingSection";
 import { ImpactSection } from "@/components/ImpactSection";
 import { FAQSection } from "@/components/FAQSection";
@@ -37,6 +38,7 @@ const Index = () => {
       <DifferenceSection />
       
       <ValuePropositionSection />
+      <AboutUsSection />
       <PricingSection />
       <ImpactSection />
       <FAQSection />
