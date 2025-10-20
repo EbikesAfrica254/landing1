@@ -127,6 +127,11 @@ const About = () => {
                       alt={member.name}
                       className="w-full h-full object-cover"
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                      <span className="text-primary-foreground font-semibold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Click to view profile
+                      </span>
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-4 text-center">
                       <h3 className="font-bold text-lg mb-1 text-primary-foreground">{member.name}</h3>
                       <p className="text-primary-foreground/90 text-sm mb-3">{member.role}</p>
