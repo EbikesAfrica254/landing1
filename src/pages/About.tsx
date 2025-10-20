@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Linkedin } from "lucide-react";
+import { Linkedin, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import aboutHero from "@/assets/about-hero.jpg";
 import teamMember1 from "@/assets/team-member-1.jpg";
@@ -51,6 +51,20 @@ const teamMembers: TeamMember[] = [
 
 const About = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  const handlePrevious = () => {
+    if (!selectedMember) return;
+    const currentIndex = teamMembers.findIndex(m => m.name === selectedMember.name);
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : teamMembers.length - 1;
+    setSelectedMember(teamMembers[previousIndex]);
+  };
+
+  const handleNext = () => {
+    if (!selectedMember) return;
+    const currentIndex = teamMembers.findIndex(m => m.name === selectedMember.name);
+    const nextIndex = currentIndex < teamMembers.length - 1 ? currentIndex + 1 : 0;
+    setSelectedMember(teamMembers[nextIndex]);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -121,7 +135,7 @@ const About = () => {
                   className="group cursor-pointer perspective-1000"
                   onClick={() => setSelectedMember(member)}
                 >
-                  <div className="relative overflow-hidden rounded-lg aspect-[3/5] transition-all duration-300 hover:scale-110 hover:rotate-2 hover:shadow-2xl">
+                  <div className="relative overflow-hidden rounded-lg aspect-[2/3] transition-all duration-300 hover:scale-110 hover:rotate-2 hover:shadow-2xl">
                     <img
                       src={member.image}
                       alt={member.name}
@@ -159,32 +173,50 @@ const About = () => {
       <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
         <DialogContent className="max-w-4xl p-0 gap-0 overflow-hidden">
           {selectedMember && (
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative aspect-square md:aspect-auto">
-                <img
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 md:p-8 flex flex-col justify-center">
-                <DialogHeader className="mb-4">
-                  <DialogTitle className="text-2xl md:text-3xl mb-2">
-                    {selectedMember.name}
-                  </DialogTitle>
-                  <p className="text-primary font-semibold">{selectedMember.role}</p>
-                </DialogHeader>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {selectedMember.bio}
-                </p>
-                <Button
-                  variant="default"
-                  className="w-full md:w-auto"
-                  onClick={() => window.open(selectedMember.linkedin, '_blank')}
-                >
-                  <Linkedin className="h-4 w-4 mr-2" />
-                  Connect on LinkedIn
-                </Button>
+            <div className="relative">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                onClick={handlePrevious}
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background/90 md:right-[calc(50%+1rem)]"
+                onClick={handleNext}
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative aspect-square md:aspect-auto">
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 md:p-8 flex flex-col justify-center">
+                  <DialogHeader className="mb-4">
+                    <DialogTitle className="text-2xl md:text-3xl mb-2">
+                      {selectedMember.name}
+                    </DialogTitle>
+                    <p className="text-primary font-semibold">{selectedMember.role}</p>
+                  </DialogHeader>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {selectedMember.bio}
+                  </p>
+                  <Button
+                    variant="default"
+                    className="w-full md:w-auto"
+                    onClick={() => window.open(selectedMember.linkedin, '_blank')}
+                  >
+                    <Linkedin className="h-4 w-4 mr-2" />
+                    Connect on LinkedIn
+                  </Button>
+                </div>
               </div>
             </div>
           )}
