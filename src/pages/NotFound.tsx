@@ -38,9 +38,7 @@ const NotFound = () => {
         </div>
       </main>
       
-      <div className="md:hidden">
-        <BottomNavigation />
-      </div>
+      <BottomNavigation />
     </div>
   );
 };
