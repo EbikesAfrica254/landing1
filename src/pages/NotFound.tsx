@@ -31,7 +31,7 @@ const NotFound = () => {
             <Button asChild size="lg">
               <Link to="/">Return to Home</Link>
             </Button>
-            <Button asChild size="lg" variant="dark">
+            <Button asChild size="lg">
               <Link to="/contacts">Book a Free Test Ride</Link>
             </Button>
           </div>
