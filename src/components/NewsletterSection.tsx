@@ -23,8 +23,7 @@ export const NewsletterSection = () => {
             />
             <Button 
               size="lg" 
-              variant="secondary"
-              className="whitespace-nowrap"
+              className="whitespace-nowrap bg-black text-white hover:bg-black/90"
             >
               Subscribe
             </Button>
