@@ -1,70 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage1 from "@/assets/hero-ebike.jpg";
-import heroImage2 from "@/assets/hero-ebike-2.jpg";
-import heroImage3 from "@/assets/hero-ebike-3.jpg";
-import { useState, useEffect } from "react";
+import heroImage from "@/assets/hero-ebike.jpg";
 
 export const HeroSection = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const heroImages = [heroImage1, heroImage2, heroImage3];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-blue-50 to-background">
-      {/* Background Images with Overlay and Parallax */}
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 via-blue-50 to-background">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        {heroImages.map((image, index) => (
-          <img 
-            key={index}
-            src={image} 
-            alt={`Electric bike scene ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-30' : 'opacity-0'
-            }`}
-            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/50" />
+        <img
+          src={heroImage}
+          alt="Electric bike rider on African street at sunset"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-4 py-20">
-        <div className="max-w-3xl">
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            Powering Work, Life, and Mobility Across the Continent with cutting-edge electric solutions
-          </p>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Africa's Future is Electric
-          </h1>
-          
-          {/* Dual CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="text-lg px-8 py-6">
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-              Learn More
-            </Button>
-          </div>
+      <div className="container relative z-10 px-4 py-20 text-center">
+        <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
+          Africa's Future is Electric
+        </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">MOVE SUSTAINABLY</p>
+
+        {/* Dual CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button size="lg" className="text-lg px-8 py-6">
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+            Learn More
+          </Button>
         </div>
       </div>
     </section>
