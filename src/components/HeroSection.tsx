@@ -31,12 +31,12 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="container relative z-10 px-4 py-20">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Africa's Future is Electric
-          </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8">
             Powering Work, Life, and Mobility Across the Continent with cutting-edge electric solutions
           </p>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Africa's Future is Electric
+          </h1>
           
           {/* Dual CTAs */}
           <div className="flex flex-col sm:flex-row gap-4">
