@@ -7,7 +7,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contacts from "./pages/Contacts";
-import ElectricBicycles from "./pages/ElectricBicycles";
+import Shop from "./pages/Shop";
 import BebaAI from "./pages/BebaAI";
 import BebaDelivery from "./pages/BebaDelivery";
 import NotFound from "./pages/NotFound";
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/electric-bicycles" element={<ElectricBicycles />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/beba-ai" element={<BebaAI />} />
           <Route path="/beba-delivery" element={<BebaDelivery />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
