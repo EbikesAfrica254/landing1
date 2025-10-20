@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Navigation } from "@/components/Navigation";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { Button } from "@/components/ui/button";
-import notFoundImg from "@/assets/404-phone-map.png";
 
 const NotFound = () => {
   const location = useLocation();
@@ -18,14 +17,6 @@ const NotFound = () => {
       
       <main className="flex-1 flex items-center justify-center bg-background py-16 px-4">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="mb-8 animate-fade-in">
-            <img 
-              src={notFoundImg} 
-              alt="Location not found - 404 error" 
-              className="w-64 h-64 mx-auto object-contain animate-pulse"
-            />
-          </div>
-          
           <h1 className="text-6xl md:text-8xl font-bold mb-4 text-foreground animate-fade-in">
             404
           </h1>
@@ -36,9 +27,14 @@ const NotFound = () => {
             Oops! The page you're looking for doesn't exist on our map.
           </p>
           
-          <Button asChild size="lg" className="animate-fade-in">
-            <Link to="/">Return to Home</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            <Button asChild size="lg">
+              <Link to="/">Return to Home</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link to="/contacts">Book a Free Test Ride</Link>
+            </Button>
+          </div>
         </div>
       </main>
       
