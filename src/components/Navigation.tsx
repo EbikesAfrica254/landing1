@@ -24,18 +24,18 @@ export const Navigation = () => {
           <Link to="/electric-bicycles" className="text-sm font-medium hover:text-primary transition-colors">
             E-Bikes
           </Link>
-          <Link to="/beba-ai" className="text-sm font-medium hover:text-primary transition-colors">
-            bEBA AI
-          </Link>
           <Link to="/beba-delivery" className="text-sm font-medium hover:text-primary transition-colors">
             Delivery
           </Link>
         </div>
         
-        {/* Contacts Button */}
-        <div className="hidden md:block">
+        {/* Action Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <Button asChild variant="outline">
+            <Link to="/beba-ai">BEBA AI Login</Link>
+          </Button>
           <Button asChild className="bg-foreground text-background hover:bg-primary">
-            <Link to="/contacts">Contacts</Link>
+            <Link to="/contacts">Contact Us</Link>
           </Button>
         </div>
       </div>
