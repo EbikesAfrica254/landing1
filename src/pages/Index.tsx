@@ -4,7 +4,6 @@ import { HeroSection } from "@/components/HeroSection";
 import { TrustBadgesSection } from "@/components/TrustBadgesSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
 import { FeaturesAlternatingSection } from "@/components/FeaturesAlternatingSection";
-import { FullWidthImageSection } from "@/components/FullWidthImageSection";
 import { PersonaSection } from "@/components/PersonaSection";
 import { ValuePropositionSection } from "@/components/ValuePropositionSection";
 import { PricingSection } from "@/components/PricingSection";
@@ -13,10 +12,8 @@ import { FAQSection } from "@/components/FAQSection";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { Footer } from "@/components/Footer";
 import { useState, useEffect } from "react";
-
 const Index = () => {
   const [isNavSticky, setIsNavSticky] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById('hero-section');
@@ -25,13 +22,10 @@ const Index = () => {
         setIsNavSticky(window.scrollY >= heroBottom);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <HeroSection />
       <div className={`${isNavSticky ? 'fixed top-0 left-0 right-0 z-50' : 'sticky top-0 z-50'}`}>
         <Navigation />
@@ -41,8 +35,7 @@ const Index = () => {
       <TrustBadgesSection />
       <FeaturesAlternatingSection />
       <DifferenceSection />
-      <FullWidthImageSection />
-      <PersonaSection />
+      
       <ValuePropositionSection />
       <PricingSection />
       <ImpactSection />
@@ -52,8 +45,6 @@ const Index = () => {
       {isNavSticky && <BottomNavigation />}
       {/* Spacer to prevent content from being hidden behind bottom nav */}
       {isNavSticky && <div className="h-16" />}
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
