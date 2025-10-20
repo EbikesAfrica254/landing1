@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { HeroSection } from "@/components/HeroSection";
+import { TrustBadgesSection } from "@/components/TrustBadgesSection";
 import { EcosystemSection } from "@/components/EcosystemSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
 import { FeaturesAlternatingSection } from "@/components/FeaturesAlternatingSection";
@@ -37,11 +38,11 @@ const Index = () => {
       </div>
       {/* Spacer to prevent content jump when nav becomes fixed */}
       {isNavSticky && <div className="h-16" />}
-      <EcosystemSection />
+      <TrustBadgesSection />
       <FeaturesAlternatingSection />
       <DifferenceSection />
       <PersonaSection />
-      <ValuePropositionSection />
+      <EcosystemSection />
       <PricingSection />
       <ImpactSection />
       <FAQSection />
