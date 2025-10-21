@@ -16,23 +16,46 @@ export const TrustBadgesSection = () => {
   ];
 
   return (
-    <section className="h-[30vh] md:h-[25vh] lg:h-[20vh] max-h-[20vh] bg-muted/30 flex items-center py-4">
+    <section className="h-[30vh] md:h-[25vh] lg:h-[20vh] max-h-[20vh] bg-muted/30 flex items-center py-4 overflow-hidden">
       <div className="container px-4 w-full">
         <p className="text-center text-muted-foreground mb-8 text-sm uppercase tracking-wider">
           Trusted by industry leaders
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center max-w-5xl mx-auto">
-          {partners.map((partner, index) => (
-            <div key={index} className="flex items-center justify-center">
-              <img 
-                src={partner.logo} 
-                alt={`${partner.name} logo`}
-                className="h-12 md:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-              />
-            </div>
-          ))}
+        <div className="relative group">
+          <div className="flex gap-12 animate-none group-hover:animate-[scroll_20s_linear_infinite]">
+            {/* First set of logos */}
+            {partners.map((partner, index) => (
+              <div key={`first-${index}`} className="flex items-center justify-center flex-shrink-0">
+                <img 
+                  src={partner.logo} 
+                  alt={`${partner.name} logo`}
+                  className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                />
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {partners.map((partner, index) => (
+              <div key={`second-${index}`} className="flex items-center justify-center flex-shrink-0">
+                <img 
+                  src={partner.logo} 
+                  alt={`${partner.name} logo`}
+                  className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 };
