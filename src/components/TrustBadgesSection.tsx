@@ -2,8 +2,8 @@ export const TrustBadgesSection = () => {
   const partners = ["Ando Foods", "ArtCaffe", "Goodlife Pharmacy", "Bolt Food", "Pizza Inn", "Chicken Inn"];
 
   return (
-    <section className="py-12 bg-muted/30">
-      <div className="container px-4">
+    <section className="h-[30vh] md:h-[25vh] lg:h-[20vh] max-h-[20vh] bg-muted/30 flex items-center py-4">
+      <div className="container px-4 w-full">
         <p className="text-center text-muted-foreground mb-8 text-sm uppercase tracking-wider">
           Trusted by industry leaders
         </p>
