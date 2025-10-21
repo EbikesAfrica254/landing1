@@ -6,18 +6,10 @@ import heroImage3 from "@/assets/hero-ebike-3.jpg";
 import logo from "@/assets/ebikes-logo.png";
 import { useState, useEffect } from "react";
 export const HeroSection = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
   const rotatingWords = ["Move People Sustainably", "Move Goods Affordably", "Move Fleets Intelligently"];
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
@@ -35,10 +27,7 @@ export const HeroSection = () => {
   return <section id="hero-section" className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-black/10 to-background">
       {/* Background Images with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
-        {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} style={{
-        transform: `translateY(${scrollY * 0.1}px)`,
-        willChange: 'transform'
-      }} />)}
+        {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} />)}
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
