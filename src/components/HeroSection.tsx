@@ -6,9 +6,17 @@ import heroImage3 from "@/assets/hero-ebike-3.jpg";
 import logo from "@/assets/ebikes-logo.png";
 import { useState, useEffect } from "react";
 export const HeroSection = () => {
+  const [scrollY, setScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const heroImages = [heroImage1, heroImage2, heroImage3];
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const rotatingWords = ["Move People Sustainably", "Move Goods Affordably", "Move Fleets Intelligently"];
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,7 +45,10 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-4 py-20">
+      <div className="container relative z-10 px-4 py-20" style={{
+        transform: `translateY(${scrollY * 0.3}px)`,
+        willChange: 'transform'
+      }}>
         <div className="max-w-3xl text-left">
           <h3 className="text-2xl md:text-3xl font-semibold text-white/90 mb-4">AI + ELECTRIC TWO WHEELERS</h3>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
