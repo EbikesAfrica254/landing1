@@ -1,15 +1,8 @@
 export const TrustBadgesSection = () => {
-  const partners = [
-    "Stripe",
-    "HubSpot", 
-    "Intercom",
-    "Asana",
-    "Zoom",
-    "Shopify"
-  ];
+  const partners = ["Ando Foods", "ArtCaffe", "Goodlife Pharmacy", "Bolt Food", "Pizza Inn", "Chicken Inn"];
 
   return (
-    <section className="h-[20vh] flex items-center bg-muted/30">
+    <section className="py-12 bg-muted/30">
       <div className="container px-4">
         <p className="text-center text-muted-foreground mb-8 text-sm uppercase tracking-wider">
           Trusted by industry leaders
