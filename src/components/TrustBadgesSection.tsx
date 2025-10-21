@@ -29,7 +29,7 @@ export const TrustBadgesSection = () => {
                 <img 
                   src={partner.logo} 
                   alt={`${partner.name} logo`}
-                  className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                  className="h-12 md:h-16 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                 />
               </div>
             ))}
@@ -39,7 +39,7 @@ export const TrustBadgesSection = () => {
                 <img 
                   src={partner.logo} 
                   alt={`${partner.name} logo`}
-                  className="h-12 md:h-16 w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0"
+                  className="h-12 md:h-16 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                 />
               </div>
             ))}
