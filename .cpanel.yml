@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    # Define the target directory on your cPanel account
+    - export DEPLOYPATH=/home/awlcstav/public_html/
+
+    # Copy all files/folders from the repo root to the public_html directory
+    # You may need to adjust this to copy only the "build" or "dist" folder 
+    # if Lovable generates a static build output.
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R .htaccess $DEPLOYPATH # Copy hidden files like .htaccess
