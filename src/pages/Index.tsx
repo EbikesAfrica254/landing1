@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { HeroSection } from "@/components/HeroSection";
+import { TrustBadgesSection } from "@/components/TrustBadgesSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
 import { FeaturesAlternatingSection } from "@/components/FeaturesAlternatingSection";
 import { PersonaSection } from "@/components/PersonaSection";
@@ -32,6 +33,7 @@ const Index = () => {
       </div>
       {/* Spacer to prevent content jump when nav becomes fixed */}
       {isNavSticky && <div className="h-16" />}
+      <TrustBadgesSection />
       <FeaturesAlternatingSection />
       <DifferenceSection />
       

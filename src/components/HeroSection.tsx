@@ -67,23 +67,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Trusted by Section */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pb-8">
-        <div className="container px-4">
-          <p className="text-center text-white/60 mb-6 text-sm uppercase tracking-wider">
-            Trusted by industry leaders
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center max-w-5xl mx-auto">
-            {["Stripe", "HubSpot", "Intercom", "Asana", "Zoom", "Shopify"].map((partner, index) => (
-              <div key={index} className="flex items-center justify-center">
-                <span className="text-2xl font-bold text-white/40 hover:text-white/80 transition-colors">
-                  {partner}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>;
 };
