@@ -28,12 +28,12 @@ const Index = () => {
   }, []);
   return <div className="min-h-screen bg-background">
       <HeroSection />
+      <TrustBadgesSection />
       <div className={`${isNavSticky ? 'fixed top-0 left-0 right-0 z-50' : 'sticky top-0 z-50'}`}>
         <Navigation />
       </div>
       {/* Spacer to prevent content jump when nav becomes fixed */}
       {isNavSticky && <div className="h-16" />}
-      <TrustBadgesSection />
       <FeaturesAlternatingSection />
       <DifferenceSection />
       
