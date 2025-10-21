@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SlidersHorizontal, Search, Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroImage from "@/assets/hero-ebike.jpg";
 
 const Shop = () => {
@@ -21,6 +21,22 @@ const Shop = () => {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [quantity, setQuantity] = useState(1);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const productImages = [
+    "https://images.unsplash.com/photo-1571333250630-f0230c320b6d?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&auto=format&fit=crop",
+  ];
+
+  useEffect(() => {
+    if (selectedProduct) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % (selectedProduct.images?.length || 1));
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [selectedProduct]);
 
   const products = [
     {
@@ -312,7 +328,7 @@ const Shop = () => {
               </span>
             </div>
             <div className="flex items-center gap-4">
-              <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="gap-2">
+              <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="gap-2 hover:bg-primary hover:text-primary-foreground hover:border-primary">
                 <SlidersHorizontal className="h-4 w-4" />
                 {showFilters ? "Hide filters" : "Show filters"}
               </Button>
@@ -341,81 +357,21 @@ const Shop = () => {
                       variant="ghost"
                       size="sm"
                       onClick={clearAllFilters}
-                      className="text-sm hover:text-primary transition-colors"
+                      className="text-sm hover:text-primary hover:bg-transparent transition-colors"
                     >
                       Clear all
                     </Button>
                   </div>
 
-                  <Accordion type="multiple" defaultValue={["categories", "brands", "colors", "price"]} className="w-full">
+                  <Accordion type="multiple" defaultValue={["categories", "brands", "price"]} className="w-full">
                     {/* Categories */}
                     <AccordionItem value="categories">
-                      <AccordionTrigger className="text-sm font-semibold">Categories</AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-2 pt-2">
-                          {categories.map((category) => (
-                            <div key={category.id} className="flex items-center space-x-2">
-                              <Checkbox
-                                id={category.id}
-                                checked={selectedCategories.includes(category.id)}
-                                onCheckedChange={() => toggleCategory(category.id)}
-                              />
-                              <Label htmlFor={category.id} className="text-sm font-normal cursor-pointer flex-1">
-                                {category.name} ({category.count})
-                              </Label>
-                            </div>
-                          ))}
-                        </div>
-                      </AccordionContent>
+...
                     </AccordionItem>
 
                     {/* Brands */}
                     <AccordionItem value="brands">
-                      <AccordionTrigger className="text-sm font-semibold">Brands</AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-2 pt-2">
-                          {brands.map((brand) => (
-                            <div key={brand.id} className="flex items-center space-x-2">
-                              <Checkbox
-                                id={brand.id}
-                                checked={selectedBrands.includes(brand.id)}
-                                onCheckedChange={() => toggleBrand(brand.id)}
-                              />
-                              <Label htmlFor={brand.id} className="text-sm font-normal cursor-pointer flex-1">
-                                {brand.name} ({brand.count})
-                              </Label>
-                            </div>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-
-                    {/* Colors */}
-                    <AccordionItem value="colors">
-                      <AccordionTrigger className="text-sm font-semibold">Color</AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-2 pt-2">
-                          {colors.map((color) => (
-                            <div key={color.id} className="flex items-center space-x-2">
-                              <Checkbox
-                                id={color.id}
-                                checked={selectedColors.includes(color.id)}
-                                onCheckedChange={() => toggleColor(color.id)}
-                              />
-                              <Label
-                                htmlFor={color.id}
-                                className="text-sm font-normal cursor-pointer flex-1 flex items-center gap-2"
-                              >
-                                <span
-                                  className="w-4 h-4 border border-border"
-                                  style={{ backgroundColor: color.hex }}
-                                />
-                                {color.name} ({color.count})
-                              </Label>
-                            </div>
-                          ))}
-                        </div>
-                      </AccordionContent>
+...
                     </AccordionItem>
 
                     {/* Price Range */}
@@ -458,11 +414,11 @@ const Shop = () => {
                         alt={product.name}
                         className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105 rounded-sm"
                       />
-                      {product.badge && <Badge className="absolute top-2 left-2">{product.badge}</Badge>}
+                      {product.badge && <Badge className="absolute top-2 left-2 bg-foreground text-background hover:bg-foreground">{product.badge}</Badge>}
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary hover:text-primary-foreground"
                       >
                         <Search className="h-4 w-4 mr-1" />
                         Quick View
@@ -470,7 +426,7 @@ const Shop = () => {
                     </div>
                     <div className="p-4">
                       <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-                      <p className="text-2xl font-bold text-primary">${product.price}</p>
+                      <p className="text-2xl font-bold text-foreground">${product.price}</p>
                     </div>
                   </Card>
                 ))}
@@ -479,7 +435,7 @@ const Shop = () => {
               {sortedProducts.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground text-lg">No products match your filters</p>
-                  <Button variant="outline" onClick={clearAllFilters} className="mt-4">
+                  <Button variant="outline" onClick={clearAllFilters} className="mt-4 hover:bg-primary hover:text-primary-foreground hover:border-primary">
                     Clear all filters
                   </Button>
                 </div>
@@ -501,14 +457,20 @@ const Shop = () => {
               <div className="space-y-4">
                 <div className="aspect-square overflow-hidden rounded-sm">
                   <img
-                    src={selectedProduct.images[0]}
+                    src={selectedProduct.images[currentImageIndex] || selectedProduct.images[0]}
                     alt={selectedProduct.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="grid grid-cols-4 gap-2">
                   {selectedProduct.images.map((img: string, idx: number) => (
-                    <div key={idx} className="aspect-square overflow-hidden rounded-sm border border-border">
+                    <div 
+                      key={idx} 
+                      className={`aspect-square overflow-hidden rounded-sm border cursor-pointer transition-all ${
+                        currentImageIndex === idx ? 'border-primary ring-2 ring-primary' : 'border-border'
+                      }`}
+                      onClick={() => setCurrentImageIndex(idx)}
+                    >
                       <img src={img} alt={`${selectedProduct.name} ${idx + 1}`} className="w-full h-full object-cover" />
                     </div>
                   ))}
@@ -518,8 +480,8 @@ const Shop = () => {
               {/* Product Info */}
               <div className="space-y-6">
                 <div>
-                  <p className="text-3xl font-bold text-primary mb-2">${selectedProduct.price}</p>
-                  {selectedProduct.badge && <Badge className="mb-4">{selectedProduct.badge}</Badge>}
+                  <p className="text-3xl font-bold text-foreground mb-2">${selectedProduct.price}</p>
+                  {selectedProduct.badge && <Badge className="mb-4 bg-foreground text-background hover:bg-foreground">{selectedProduct.badge}</Badge>}
                   <p className="text-muted-foreground">{selectedProduct.description}</p>
                 </div>
 
@@ -532,7 +494,7 @@ const Shop = () => {
                         variant="ghost"
                         size="icon"
                         onClick={decrementQuantity}
-                        className="h-10 w-10"
+                        className="h-10 w-10 hover:bg-primary hover:text-primary-foreground"
                       >
                         <Minus className="h-4 w-4" />
                       </Button>
@@ -541,7 +503,7 @@ const Shop = () => {
                         variant="ghost"
                         size="icon"
                         onClick={incrementQuantity}
-                        className="h-10 w-10"
+                        className="h-10 w-10 hover:bg-primary hover:text-primary-foreground"
                       >
                         <Plus className="h-4 w-4" />
                       </Button>
@@ -550,8 +512,8 @@ const Shop = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-4">
-                    <Button className="flex-1">Add to Cart</Button>
-                    <Button variant="outline" className="flex-1">
+                    <Button className="flex-1 hover:bg-primary hover:text-primary-foreground">Add to Cart</Button>
+                    <Button variant="outline" className="flex-1 hover:bg-primary hover:text-primary-foreground hover:border-primary">
                       View Details
                     </Button>
                   </div>
