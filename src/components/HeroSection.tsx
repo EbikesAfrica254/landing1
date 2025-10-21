@@ -69,7 +69,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Trusted by Section */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-black/60 backdrop-blur-sm py-8">
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-muted/50 backdrop-blur-sm py-8">
         <div className="container px-4">
           <p className="text-center text-white/60 mb-6 text-sm uppercase tracking-wider">
             Trusted by industry leaders
