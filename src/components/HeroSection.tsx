@@ -32,7 +32,7 @@ export const HeroSection = () => {
 
     return () => clearInterval(interval);
   }, []);
-  return <section id="hero-section" className="relative h-[70vh] md:h-[75vh] lg:h-[80vh] max-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-black/10 to-background">
+  return <section id="hero-section" className="relative h-[70vh] md:h-[75vh] lg:h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-black/5 via-black/10 to-background">
       {/* Background Images with Overlay and Parallax */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((image, index) => <img key={index} src={image} alt={`Electric bike scene ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"}`} style={{
